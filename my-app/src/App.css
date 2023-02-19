@@ -1,0 +1,52 @@
+.App {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.btnBox
+{
+  display: flex;
+  flex-direction: row;
+  width: 330px;
+  justify-content: center;
+  align-items: center;
+}
+
+.CalcBtn
+{
+  width: 100px;
+  height: 50px;
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+  font-size: large;
+}
+
+.inputArea
+{
+  margin-left: 60px;
+  width: 200px;
+  height: 100px;
+  font-family: 'Courier New', Courier, monospace;
+  text-align: right;
+  font-size: large;
+}
+
+.litrealArea
+{
+  margin-left: 60px;
+  width: 200px;
+  height: 30px;
+  font-family: 'Courier New', Courier, monospace;
+  text-align: right;
+  font-size: large;
+  border-style: none;
+}
+
+.flexDisplay
+{
+  display: flex;
+  flex-direction: column;
+  height: 160px;
+}
+
