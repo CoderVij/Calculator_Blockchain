@@ -16,8 +16,8 @@ export default function Component()
     const totalButtons = [1,2,3,4,5,6,7,8,9,0, '+', '-', '*', '/', '='];
 
     const [dummyState, setDummyState] = useState(false);
-    const [stringLiterals, setStringLiterals] = useState('');
-    const [topLiterals, setTopLiterals] = useState('');
+    const [mainInputField, setMainInputField] = useState('');
+    const [topDisplay, setTopDisplay] = useState('');
 
     const web3ModalRef = useRef();
 
@@ -51,7 +51,7 @@ export default function Component()
 
     async function getProviderOrSigner(getSigner = false)
     {
-        console.log(numArry);
+        //console.log(numArry);
         try
         {
             const provider = await web3ModalRef.current.connect();
@@ -100,7 +100,7 @@ export default function Component()
 
             setNumArry(prevNumArry => [...prevNumArry, data]);
 
-            setTopLiterals(topLiterals + data);
+            setTopDisplay(topDisplay + data);
             setData('');
             setDummyState(!dummyState);
         }
@@ -111,9 +111,9 @@ export default function Component()
         }
 
         if(num != '=')
-            setStringLiterals(stringLiterals + num);
+            setMainInputField(mainInputField + num);
 
-        console.log(operator + " data: " + data  + " literals: " + stringLiterals);
+       // console.log(operator + " data: " + data  + " literals: " + mainInputField);
     };
 
     function doCalculation()
@@ -134,7 +134,7 @@ export default function Component()
         // Convert each element of numArry to a BigNumber object
         //console.log(numArry);
         const numbers = numArry.map((n) => utils.parseUnits(n.toString(), 0));
-        console.log(numbers.toString());
+        //console.log(numbers.toString());
         try
         {
             const signer = await getProviderOrSigner(true);
@@ -153,7 +153,7 @@ export default function Component()
 
             setData(ticket);
 
-            setStringLiterals(ticket);
+            setMainInputField(ticket);
             setNumArry([]);
 
         }
@@ -162,15 +162,15 @@ export default function Component()
             console.log(error);
             setNumArry([]);
             setData('');
-            setTopLiterals('');
-            setStringLiterals('');
+            setTopDisplay('');
+            setMainInputField('');
         }
     }
 
     return(
         <div>
             <div className="flexDisplay">
-            <input className= "litrealArea" type="text" value={stringLiterals} readOnly></input>
+            <input className= "litrealArea" type="text" value={mainInputField} readOnly></input>
             <input className= "inputArea" type="text" value={data} readOnly></input>
             </div>
             <div className="btnBox">       
